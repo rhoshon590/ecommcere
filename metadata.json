@@ -1,0 +1,6 @@
+{
+  "name": "ShopFlow Store & Inventory Hub",
+  "description": "E-commerce store with real-time inventory tracking, low-stock threshold alerts, secure payment processing, and 24/7 live support concierge for shoppers and small business owners.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
