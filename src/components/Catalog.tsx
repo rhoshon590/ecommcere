@@ -39,7 +39,7 @@ export function Catalog() {
                 role="tab"
                 aria-selected={active}
                 onClick={() => setFilter(f)}
-                className={`relative rounded-full px-4 py-1.5 text-xs tracking-wide transition-colors duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                className={`relative inline-flex items-center rounded-full px-4 min-h-11 text-xs tracking-wide transition-colors duration-200 cursor-pointer touch-manipulation focus:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
                   active
                     ? "text-on-primary"
                     : "text-secondary hover:text-primary"

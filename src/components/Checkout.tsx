@@ -168,7 +168,7 @@ export function Checkout({ open, onClose }: Props) {
             transition={{ type: "spring", stiffness: 280, damping: 30 }}
             className="relative w-full md:max-w-3xl bg-background md:rounded-2xl shadow-2xl flex flex-col max-h-screen md:max-h-[90vh] overflow-hidden"
           >
-            <header className="flex items-center justify-between px-6 md:px-8 pt-6 pb-4 border-b border-border/60">
+            <header className="flex items-center justify-between pl-6 pr-6 md:pl-8 md:pr-8 pt-[calc(env(safe-area-inset-top)+1.5rem)] pb-4 border-b border-border/60">
               <div>
                 <p className="uppercase tracking-[0.3em] text-[10px] text-secondary">
                   AuraShop Checkout
@@ -180,7 +180,7 @@ export function Checkout({ open, onClose }: Props) {
               <button
                 onClick={close}
                 aria-label="Close checkout"
-                className="rounded-full p-2 text-secondary hover:text-primary hover:bg-muted transition-colors duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="rounded-full h-11 w-11 inline-flex items-center justify-center text-secondary hover:text-primary hover:bg-muted transition-colors duration-200 cursor-pointer touch-manipulation focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -273,12 +273,12 @@ export function Checkout({ open, onClose }: Props) {
             </div>
 
             {!complete && (
-              <footer className="border-t border-border/60 px-6 md:px-8 py-5 flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-4 bg-background">
+              <footer className="border-t border-border/60 pl-6 pr-6 md:pl-8 md:pr-8 pt-5 pb-[calc(env(safe-area-inset-bottom)+1.25rem)] flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-4 bg-background">
                 <div className="flex items-center gap-3">
                   {step > 0 && (
                     <button
                       onClick={back}
-                      className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2.5 text-sm text-primary hover:bg-muted transition-colors duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                      className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2.5 min-h-11 text-sm text-primary hover:bg-muted transition-colors duration-200 cursor-pointer touch-manipulation focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     >
                       <ArrowLeft className="h-4 w-4" />
                       Back
@@ -304,7 +304,7 @@ export function Checkout({ open, onClose }: Props) {
                   <button
                     onClick={next}
                     disabled={lines.length === 0 || processing}
-                    className="inline-flex items-center gap-2 rounded-full bg-primary text-on-primary px-6 py-3 text-sm font-medium tracking-wide hover:bg-accent transition-colors duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="inline-flex items-center gap-2 rounded-full bg-primary text-on-primary px-6 py-3 min-h-11 text-sm font-medium tracking-wide hover:bg-accent transition-colors duration-300 cursor-pointer touch-manipulation focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {processing ? (
                       <>
@@ -355,7 +355,7 @@ function Stepper({ currentStep }: { currentStep: number }) {
                     borderColor: isDone || isActive ? "var(--color-primary)" : "var(--color-border)",
                   }}
                   transition={{ duration: 0.3 }}
-                  className="relative h-9 w-9 rounded-full border flex items-center justify-center"
+                  className="relative h-10 w-10 rounded-full border flex items-center justify-center"
                 >
                   <AnimatePresence mode="wait" initial={false}>
                     {isDone ? (
@@ -815,7 +815,7 @@ function Field({
 
 function inputClass(error?: string) {
   return [
-    "w-full rounded-lg bg-background px-4 py-3 text-sm text-primary placeholder:text-secondary/60",
+    "w-full rounded-lg bg-background px-4 py-3 text-base sm:text-sm text-primary placeholder:text-secondary/60",
     "border transition-colors duration-200",
     "focus:outline-none focus:ring-2 focus:ring-ring/30",
     error

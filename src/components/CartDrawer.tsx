@@ -29,9 +29,9 @@ export function CartDrawer({ onCheckout }: Props) {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", stiffness: 320, damping: 36 }}
-            className="absolute top-0 right-0 h-full w-full sm:w-[28rem] bg-background shadow-2xl flex flex-col"
+            className="absolute top-0 right-0 h-full w-full sm:w-[28rem] bg-background shadow-2xl flex flex-col pr-[env(safe-area-inset-right)]"
           >
-            <header className="flex items-center justify-between px-6 py-5 border-b border-border/70">
+            <header className="flex items-center justify-between pl-6 pr-6 pt-[calc(env(safe-area-inset-top)+1.25rem)] pb-5 border-b border-border/70">
               <div>
                 <h2 className="font-heading text-2xl text-primary leading-tight">
                   Your Cart
@@ -45,7 +45,7 @@ export function CartDrawer({ onCheckout }: Props) {
               <button
                 onClick={close}
                 aria-label="Close cart"
-                className="rounded-full p-2 text-secondary hover:text-primary hover:bg-muted transition-colors duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="rounded-full h-11 w-11 inline-flex items-center justify-center text-secondary hover:text-primary hover:bg-muted transition-colors duration-200 cursor-pointer touch-manipulation focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -87,7 +87,7 @@ export function CartDrawer({ onCheckout }: Props) {
                             <button
                               onClick={() => remove(line.product.id)}
                               aria-label={`Remove ${line.product.name}`}
-                              className="text-secondary hover:text-destructive transition-colors duration-200 cursor-pointer p-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded"
+                              className="h-10 w-10 inline-flex items-center justify-center rounded-full text-secondary hover:text-destructive transition-colors duration-200 cursor-pointer touch-manipulation focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                             >
                               <Trash2 className="h-4 w-4" />
                             </button>
@@ -112,7 +112,7 @@ export function CartDrawer({ onCheckout }: Props) {
             </div>
 
             {lines.length > 0 && (
-              <footer className="border-t border-border/70 px-6 py-5 space-y-4">
+              <footer className="border-t border-border/70 pl-6 pr-6 pt-5 pb-[calc(env(safe-area-inset-bottom)+1.25rem)] space-y-4">
                 <Row label="Subtotal" value={formatPrice(subtotal)} />
                 <Row label="Shipping" value={<span className="text-secondary">Calculated at checkout</span>} />
                 <div className="flex items-center justify-between pt-2 border-t border-border/60">
@@ -129,7 +129,7 @@ export function CartDrawer({ onCheckout }: Props) {
                 </div>
                 <button
                   onClick={onCheckout}
-                  className="w-full inline-flex items-center justify-center rounded-full bg-primary text-on-primary py-3.5 text-sm font-medium tracking-wide hover:bg-accent transition-colors duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  className="w-full inline-flex items-center justify-center rounded-full bg-primary text-on-primary py-3.5 min-h-12 text-sm font-medium tracking-wide hover:bg-accent transition-colors duration-300 cursor-pointer touch-manipulation focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
                   Proceed to Checkout
                 </button>
@@ -165,9 +165,9 @@ function QtyStepper({
       <button
         onClick={onDec}
         aria-label="Decrease quantity"
-        className="p-2 text-secondary hover:text-primary hover:bg-muted transition-colors duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        className="h-11 w-11 inline-flex items-center justify-center text-secondary hover:text-primary hover:bg-muted transition-colors duration-200 cursor-pointer touch-manipulation focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       >
-        <Minus className="h-3.5 w-3.5" />
+        <Minus className="h-4 w-4" />
       </button>
       <span className="min-w-[2ch] text-center text-sm text-primary tabular-nums">
         {qty}
@@ -175,9 +175,9 @@ function QtyStepper({
       <button
         onClick={onInc}
         aria-label="Increase quantity"
-        className="p-2 text-secondary hover:text-primary hover:bg-muted transition-colors duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        className="h-11 w-11 inline-flex items-center justify-center text-secondary hover:text-primary hover:bg-muted transition-colors duration-200 cursor-pointer touch-manipulation focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       >
-        <Plus className="h-3.5 w-3.5" />
+        <Plus className="h-4 w-4" />
       </button>
     </div>
   );
@@ -195,7 +195,7 @@ function EmptyState({ onClose }: { onClose: () => void }) {
       </p>
       <button
         onClick={onClose}
-        className="mt-6 rounded-full border border-primary text-primary px-6 py-2.5 text-sm hover:bg-primary hover:text-on-primary transition-colors duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        className="mt-6 rounded-full border border-primary text-primary px-6 min-h-11 text-sm hover:bg-primary hover:text-on-primary transition-colors duration-200 cursor-pointer touch-manipulation focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       >
         Browse the Collection
       </button>

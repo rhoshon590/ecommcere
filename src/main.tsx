@@ -11,3 +11,13 @@ createRoot(document.getElementById("root")!).render(
     </BrowserRouter>
   </StrictMode>
 );
+
+// Register the service worker so the store is installable as a PWA and keeps
+// working offline once the app shell has been cached.
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js").catch(() => {
+      /* The service worker is optional — the store renders fine without it. */
+    });
+  });
+}

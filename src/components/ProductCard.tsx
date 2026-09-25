@@ -50,7 +50,7 @@ export function ProductCard({ product }: { product: Product }) {
             initial={false}
             animate={justAdded ? { scale: [1, 1.08, 1] } : { scale: 1 }}
             transition={{ duration: 0.4 }}
-            className="absolute bottom-3 right-3 inline-flex items-center gap-2 rounded-full bg-primary text-on-primary pl-3 pr-4 py-2 text-xs font-medium shadow-lg translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 focus:translate-y-0 focus:opacity-100 transition-all duration-300 cursor-pointer hover:bg-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="absolute bottom-3 right-3 inline-flex items-center gap-2 rounded-full bg-primary text-on-primary pl-3 pr-4 min-h-11 text-xs font-medium shadow-lg translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 focus:translate-y-0 focus:opacity-100 pointer-coarse:translate-y-0 pointer-coarse:opacity-100 transition-all duration-300 cursor-pointer touch-manipulation hover:bg-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             {justAdded ? (
               <>
