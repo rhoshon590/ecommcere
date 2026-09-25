@@ -1,1 +1,53 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+@theme {
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-heading: "Cormorant", ui-serif, Georgia, serif;
+  --color-primary: oklch(0.2161 0.0061 56.04);
+  --color-on-primary: oklch(1.0 0 0);
+  --color-secondary: oklch(0.3741 0.0087 67.56);
+  --color-accent: oklch(0.5538 0.1207 66.44);
+  --color-background: oklch(0.9848 0.0013 106.42);
+  --color-foreground: oklch(0.1469 0.0041 49.25);
+  --color-muted: oklch(0.9412 0.0069 247.9);
+  --color-border: oklch(0.8687 0.0043 56.37);
+  --color-destructive: oklch(0.5771 0.2152 27.33);
+  --color-ring: oklch(0.2161 0.0061 56.04);
+  --color-clay: oklch(0.92 0.018 70);
+  --color-clay-deep: oklch(0.78 0.04 65);
+}
+
+html,
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle textured background reminiscent of unglazed stoneware */
+.bg-stoneware {
+  background-color: var(--color-background);
+  background-image:
+    radial-gradient(at 12% 8%, oklch(0.92 0.02 70 / 0.55) 0px, transparent 50%),
+    radial-gradient(at 88% 92%, oklch(0.88 0.03 65 / 0.4) 0px, transparent 55%);
+}
+
+/* Scrollbar refinement */
+.scroll-elegant::-webkit-scrollbar {
+  width: 6px;
+}
+.scroll-elegant::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: 9999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

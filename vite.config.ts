@@ -1,22 +1,40 @@
-import tailwindcss from '@tailwindcss/vite';
-import react from '@vitejs/plugin-react';
-import path from 'path';
-import {defineConfig} from 'vite';
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+import svgr from 'vite-plugin-svgr'
 
-export default defineConfig(() => {
-  return {
-    plugins: [react(), tailwindcss()],
-    resolve: {
-      alias: {
-        '@': path.resolve(__dirname, '.'),
-      },
-    },
-    server: {
-      // HMR is disabled in AI Studio via DISABLE_HMR env var.
-      // Do not modifyâfile watching is disabled to prevent flickering during agent edits.
-      hmr: process.env.DISABLE_HMR !== 'true',
-      // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
-      watch: process.env.DISABLE_HMR === 'true' ? null : {},
-    },
-  };
+// Custom plugin to handle ?import&react syntax (alias to ?react)
+const svgImportPlugin = () => ({
+  name: 'svg-import-alias',
+  resolveId(id: string) {
+    // Transform ?import&react to ?react for vite-plugin-svgr
+    if (id.includes('?import&react')) {
+      return id.replace('?import&react', '?react');
+    }
+    return null;
+  },
 });
+
+// https://vite.dev/config/
+export default defineConfig(() => ({
+  plugins: [
+    react(),
+    tailwindcss(),
+    svgImportPlugin(),
+    svgr({
+      // Support named ReactComponent export (for ?react syntax)
+      svgrOptions: {
+        exportType: 'named',
+        namedExport: 'ReactComponent',
+        ref: true,
+        svgo: false,
+        titleProp: true,
+      },
+      include: '**/*.svg?react',
+    }),
+  ],
+  server: {
+    allowedHosts: true as const,
+    hmr: false,
+  },
+}))
